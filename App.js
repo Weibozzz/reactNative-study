@@ -1,14 +1,36 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
+import TabNavigator from 'react-native-tab-navigator';
 
 export default class App extends React.Component {
+  constructor(props){
+    super(props)
+    this.state={
+      selectedTab:'home'
+    }
+  }
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app9!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
+      <TabNavigator>
+        <TabNavigator.Item
+          selected={this.state.selectedTab === 'home'}
+          title="Home"
+          renderIcon={() => <Image source={require("./res/images/ic_favorite.png")} />}
+          renderSelectedIcon={() => <Image source={require("./res/images/ic_favorite.png")} />}
+          badgeText="1"
+          onPress={() => this.setState({ selectedTab: 'home2' })}>
+          <Text>kjhdf</Text>
+        </TabNavigator.Item>
+        <TabNavigator.Item
+          selected={this.state.selectedTab === 'home2'}
+          title="Home"
+          renderIcon={() => <Image source={require("./res/images/ic_favorite.png")} />}
+          renderSelectedIcon={() => <Image source={require("./res/images/ic_favorite.png")} />}
+          badgeText="1"
+          onPress={() => this.setState({ selectedTab: 'home' })}>
+          <Text>kjhdf2</Text>
+        </TabNavigator.Item>
+      </TabNavigator>
     );
   }
 }
@@ -16,7 +38,7 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f0f',
+    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
